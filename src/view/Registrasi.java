@@ -1,5 +1,8 @@
 
+import controller.UsersController;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import model.Users;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,11 +15,13 @@ import java.awt.Color;
  */
 public class Registrasi extends javax.swing.JFrame {
 
+    UsersController userCtrl;
     /**
      * Creates new form Registrasi
      */
     public Registrasi() {
         initComponents();
+        userCtrl = new UsersController();
     }
 
     /**
@@ -41,9 +46,9 @@ public class Registrasi extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         confirmPassword = new javax.swing.JPasswordField();
         jSeparator3 = new javax.swing.JSeparator();
-        creatbtn = new javax.swing.JButton();
+        createbtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        createUsername1 = new javax.swing.JTextField();
+        createName = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         loginLabel = new javax.swing.JLabel();
@@ -94,26 +99,31 @@ public class Registrasi extends javax.swing.JFrame {
 
         confirmPassword.setBorder(null);
 
-        creatbtn.setBackground(new java.awt.Color(4, 133, 36));
-        creatbtn.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        creatbtn.setForeground(new java.awt.Color(255, 255, 255));
-        creatbtn.setText("CREATE");
+        createbtn.setBackground(new java.awt.Color(4, 133, 36));
+        createbtn.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
+        createbtn.setForeground(new java.awt.Color(255, 255, 255));
+        createbtn.setText("CREATE");
+        createbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createbtnActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/user.png"))); // NOI18N
         jLabel6.setText("Name");
 
-        createUsername1.setForeground(new java.awt.Color(153, 153, 153));
-        createUsername1.setBorder(null);
-        createUsername1.setOpaque(true);
-        createUsername1.addMouseListener(new java.awt.event.MouseAdapter() {
+        createName.setForeground(new java.awt.Color(153, 153, 153));
+        createName.setBorder(null);
+        createName.setOpaque(true);
+        createName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                createUsername1MouseClicked(evt);
+                createNameMouseClicked(evt);
             }
         });
-        createUsername1.addActionListener(new java.awt.event.ActionListener() {
+        createName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createUsername1ActionPerformed(evt);
+                createNameActionPerformed(evt);
             }
         });
 
@@ -153,13 +163,13 @@ public class Registrasi extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(createUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(createName, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(creatbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(createbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator1)
                                         .addComponent(createUsername, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jSeparator4)
@@ -184,7 +194,7 @@ public class Registrasi extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(createUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,7 +216,7 @@ public class Registrasi extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(creatbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -240,13 +250,13 @@ public class Registrasi extends javax.swing.JFrame {
        createUsername.setText("");
     }//GEN-LAST:event_createUsernameMouseClicked
 
-    private void createUsername1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createUsername1MouseClicked
+    private void createNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createNameMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_createUsername1MouseClicked
+    }//GEN-LAST:event_createNameMouseClicked
 
-    private void createUsername1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUsername1ActionPerformed
+    private void createNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_createUsername1ActionPerformed
+    }//GEN-LAST:event_createNameActionPerformed
 
     private void loginLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginLabelMouseClicked
         // TODO add your handling code here:
@@ -262,6 +272,35 @@ public class Registrasi extends javax.swing.JFrame {
         
         loginLabel.setForeground(new Color(0,204,0));
     }//GEN-LAST:event_loginLabelMouseExited
+
+    private void createbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createbtnActionPerformed
+        String nama = createName.getText();
+        String username = createUsername.getText();
+        String password = new String (createPassword.getPassword());
+        String cPassword = new String (confirmPassword.getPassword());
+        
+        if (!nama.isEmpty() && !username.isEmpty() && !password.isEmpty() && !cPassword.isEmpty()){
+            if(nama.length() > 60 && username.length() > 30 && password.length() > 30){
+                JOptionPane.showMessageDialog(this,"Nama, username, atau password melebihi batas karakter!");
+            } else {
+                if (!password.equals(cPassword)){
+                    JOptionPane.showMessageDialog(this, "Password salah");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Akun berhasil dibuat!");
+                    Users user = new Users(nama, username, password);
+                    int cekSukses = userCtrl.insertUser(user);
+                    
+                    if (cekSukses > 0){
+                        JOptionPane.showMessageDialog(this, "Berhasil");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Gagal");
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Lengkapi atribut!");
+        }
+    }//GEN-LAST:event_createbtnActionPerformed
 
 
     /**
@@ -301,10 +340,10 @@ public class Registrasi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField confirmPassword;
-    private javax.swing.JButton creatbtn;
+    private javax.swing.JTextField createName;
     private javax.swing.JPasswordField createPassword;
     private javax.swing.JTextField createUsername;
-    private javax.swing.JTextField createUsername1;
+    private javax.swing.JButton createbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

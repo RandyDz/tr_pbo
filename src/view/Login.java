@@ -1,6 +1,11 @@
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import koneksi.Koneksi;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,14 +17,23 @@ import javax.swing.JOptionPane;
  * @author PED
  */
 public class Login extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form index
      */
     public Login() {
         initComponents();
+//        try {            
+//            //Buat koneksi ke DB
+//            Connection con = Koneksi.getConnection();
+//            System.out.println(con);
+//            //Buat statement
+////            Statement st = con.createStatement();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -242,10 +256,27 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String u = username.getText();
         String p = new String(password.getPassword());
-        if (u.equals("admin") && p.equals("admin")){
-            JOptionPane.showMessageDialog(this, "Login Berhasil");
-        } else {
-            JOptionPane.showMessageDialog(this, "Username atau password anda salah!");
+        
+        try {
+            Connection con = Koneksi.getConnection();
+            Statement st = con.createStatement();
+            String query;
+            if(u.equals("admin")){
+                query = "SELECT * FROM admin WHERE username = '"+ u +"' AND password = '"+ p +"'";
+            } else {
+                query = "SELECT * FROM users WHERE username = '"+ u +"' AND password = '"+ p +"'";
+            }
+            ResultSet rs = st.executeQuery(query);
+            
+            if (rs.next()){
+                if (u.equals(rs.getString("username")) && p.equals(rs.getString("password"))){
+                    JOptionPane.showMessageDialog(this, "Login Berhasil");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Username atau password anda salah!");   
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_loginbtnMouseClicked
 

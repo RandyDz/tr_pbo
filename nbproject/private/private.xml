@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/view/Registrasi.java</file>
             <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/model/Admin.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/model/Pinjaman.java</file>
+            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/koneksi/Koneksi.java</file>
+            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/view/Login.java</file>
+            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/controller/AdminController.java</file>
         </group>
     </open-files>
 </project-private>
