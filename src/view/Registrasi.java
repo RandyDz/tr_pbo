@@ -83,13 +83,13 @@ public class Registrasi extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\PED\\Downloads\\padlock.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padlock.png"))); // NOI18N
         jLabel4.setText("Password");
 
         createPassword.setBorder(null);
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\PED\\Downloads\\padlock.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padlock.png"))); // NOI18N
         jLabel5.setText("Confirm Password");
 
         confirmPassword.setBorder(null);
@@ -157,22 +157,18 @@ public class Registrasi extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(77, 77, 77))
+                                    .addComponent(jLabel5)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(creatbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator1)
                                         .addComponent(createUsername, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jSeparator4)
                                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addGap(273, 273, 273))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel6)
                                                 .addComponent(jLabel3)
                                                 .addComponent(jLabel4))
-                                            .addGap(128, 128, 128)))))))
+                                            .addGap(247, 247, 247)))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addComponent(jLabel7)
