@@ -48,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/women-1668962353953-795.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/women-1668962353953-795.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -64,7 +64,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("LOGIN");
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user (1).png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/user.png"))); // NOI18N
         jLabel2.setText("Username");
 
         username.setForeground(new java.awt.Color(153, 153, 153));
@@ -76,7 +76,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padlock.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/padlock.png"))); // NOI18N
         jLabel3.setText("Password");
 
         password.setForeground(new java.awt.Color(0, 204, 0));
@@ -183,7 +183,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(loginbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addComponent(loginbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

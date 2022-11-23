@@ -47,7 +47,7 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/women-1668962353953-795.jpg"/>
+          <Image iconType="3" name="/view/image/women-1668962353953-795.jpg"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
       </Properties>
@@ -137,7 +137,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="loginbtn" pref="37" max="32767" attributes="0"/>
+                  <Component id="loginbtn" pref="35" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -177,7 +177,7 @@
               <Font name="Montserrat" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/user (1).png"/>
+              <Image iconType="3" name="/view/image/user.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Username"/>
           </Properties>
@@ -201,7 +201,7 @@
               <Font name="Montserrat" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/padlock.png"/>
+              <Image iconType="3" name="/view/image/padlock.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>

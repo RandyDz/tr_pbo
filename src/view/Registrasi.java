@@ -53,7 +53,7 @@ public class Registrasi extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Inside-the-Grimoire-Bookshop-1.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/Inside-the-Grimoire-Bookshop-1.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 480));
 
@@ -65,7 +65,7 @@ public class Registrasi extends javax.swing.JFrame {
         jLabel2.setText("CREAT ACCOUNT");
 
         jLabel3.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user (1).png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/user.png"))); // NOI18N
         jLabel3.setText("Username");
 
         createUsername.setForeground(new java.awt.Color(153, 153, 153));
@@ -83,13 +83,13 @@ public class Registrasi extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padlock.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/padlock.png"))); // NOI18N
         jLabel4.setText("Password");
 
         createPassword.setBorder(null);
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/padlock.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/padlock.png"))); // NOI18N
         jLabel5.setText("Confirm Password");
 
         confirmPassword.setBorder(null);
@@ -100,7 +100,7 @@ public class Registrasi extends javax.swing.JFrame {
         creatbtn.setText("CREATE");
 
         jLabel6.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user (1).png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/user.png"))); // NOI18N
         jLabel6.setText("Name");
 
         createUsername1.setForeground(new java.awt.Color(153, 153, 153));
@@ -174,7 +174,7 @@ public class Registrasi extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(loginLabel)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
