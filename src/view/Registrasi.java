@@ -8,7 +8,6 @@ import model.Users;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author PED
@@ -16,6 +15,7 @@ import model.Users;
 public class Registrasi extends javax.swing.JFrame {
 
     UsersController userCtrl;
+
     /**
      * Creates new form Registrasi
      */
@@ -247,7 +247,7 @@ public class Registrasi extends javax.swing.JFrame {
     }//GEN-LAST:event_createUsernameActionPerformed
 
     private void createUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createUsernameMouseClicked
-       createUsername.setText("");
+        createUsername.setText("");
     }//GEN-LAST:event_createUsernameMouseClicked
 
     private void createNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createNameMouseClicked
@@ -269,39 +269,43 @@ public class Registrasi extends javax.swing.JFrame {
     }//GEN-LAST:event_loginLabelMouseEntered
 
     private void loginLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginLabelMouseExited
-        
-        loginLabel.setForeground(new Color(0,204,0));
+
+        loginLabel.setForeground(new Color(0, 204, 0));
     }//GEN-LAST:event_loginLabelMouseExited
 
     private void createbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createbtnActionPerformed
         String nama = createName.getText();
         String username = createUsername.getText();
-        String password = new String (createPassword.getPassword());
-        String cPassword = new String (confirmPassword.getPassword());
-        
-        if (!nama.isEmpty() && !username.isEmpty() && !password.isEmpty() && !cPassword.isEmpty()){
-            if(nama.length() > 60 && username.length() > 30 && password.length() > 30){
-                JOptionPane.showMessageDialog(this,"Nama, username, atau password melebihi batas karakter!");
+        String password = new String(createPassword.getPassword());
+        String cPassword = new String(confirmPassword.getPassword());
+
+        if (!nama.isEmpty() && !username.isEmpty() && !password.isEmpty() && !cPassword.isEmpty()) {
+            if (nama.length() > 60 && username.length() > 30 && password.length() > 30) {
+                JOptionPane.showMessageDialog(this, "Nama, username, atau password melebihi batas karakter!");
             } else {
-                if (!password.equals(cPassword)){
-                    JOptionPane.showMessageDialog(this, "Password salah");
+                String cekUname = userCtrl.cekUsername(username);
+                if (cekUname.equals("no")) {
+                    JOptionPane.showMessageDialog(this, "Username Sudah Digunakan!");
                 } else {
-                    JOptionPane.showMessageDialog(this, "Akun berhasil dibuat!");
-                    Users user = new Users(nama, username, password);
-                    int cekSukses = userCtrl.insertUser(user);
-                    
-                    if (cekSukses > 0){
-                        JOptionPane.showMessageDialog(this, "Berhasil");
+                    if (!password.equals(cPassword)) {
+                        JOptionPane.showMessageDialog(this, "Password salah");
                     } else {
-                        JOptionPane.showMessageDialog(this, "Gagal");
+                        Users user = new Users(nama, username, password);
+                        int cekSukses = userCtrl.insertUser(user);
+
+                        if (cekSukses > 0) {
+                            JOptionPane.showMessageDialog(this, "Akun berhasil dibuat!");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Gagal membuat akun");
+                        }
                     }
                 }
+
             }
         } else {
             JOptionPane.showMessageDialog(this, "Lengkapi atribut!");
         }
     }//GEN-LAST:event_createbtnActionPerformed
-
 
     /**
      * @param args the command line arguments
