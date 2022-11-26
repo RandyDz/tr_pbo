@@ -21,7 +21,7 @@ public class Koneksi {
         try {
 //            Class.forName("com.mysql.jdbc.Driver");
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String db = "jdbc:mysql://localhost/db_perpustakaan";
+            String db = "jdbc:mysql://localhost/db_perpus";
             String username = "root";
             String password = "";
             conn = DriverManager.getConnection(db, username, password);
