@@ -41,7 +41,7 @@ public class Menu extends javax.swing.JFrame {
         Label3 = new javax.swing.JLabel();
         Tab3 = new javax.swing.JPanel();
         Label4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        exitBtn = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -195,7 +195,12 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/button.png"))); // NOI18N
+        exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/button.png"))); // NOI18N
+        exitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -206,7 +211,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(Tab3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addComponent(exitBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -219,7 +224,7 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Tab3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(exitBtn)
                 .addGap(22, 22, 22))
         );
 
@@ -438,6 +443,10 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void exitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -481,12 +490,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel Tab1;
     private javax.swing.JPanel Tab2;
     private javax.swing.JPanel Tab3;
+    private javax.swing.JLabel exitBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
