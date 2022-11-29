@@ -11,14 +11,16 @@ import java.awt.Color;
  */
 public class Menu extends javax.swing.JFrame {
 
-    Color off = new Color(153, 153, 153);
-    Color on = new Color(255, 255, 255);
+    Color off = new Color(33, 34, 38);//IRENG
+    Color on = new Color(102, 102, 102);//abu2
+    
 
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        Tab1.setBackground(on);
         
     }
 
@@ -41,7 +43,8 @@ public class Menu extends javax.swing.JFrame {
         Label3 = new javax.swing.JLabel();
         Tab3 = new javax.swing.JPanel();
         Label4 = new javax.swing.JLabel();
-        exitBtn = new javax.swing.JLabel();
+        EXIT = new javax.swing.JPanel();
+        Label5 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -95,12 +98,6 @@ public class Menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tab1MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Tab1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Tab1MouseExited(evt);
-            }
         });
 
         Label2.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
@@ -129,12 +126,6 @@ public class Menu extends javax.swing.JFrame {
         Tab2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tab2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Tab2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Tab2MouseExited(evt);
             }
         });
 
@@ -165,42 +156,58 @@ public class Menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tab3MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Tab3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Tab3MouseExited(evt);
-            }
         });
 
         Label4.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
         Label4.setForeground(new java.awt.Color(255, 255, 255));
         Label4.setLabelFor(Tab3);
-        Label4.setText("Button");
+        Label4.setText("Author");
 
         javax.swing.GroupLayout Tab3Layout = new javax.swing.GroupLayout(Tab3);
         Tab3.setLayout(Tab3Layout);
         Tab3Layout.setHorizontalGroup(
             Tab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Tab3Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tab3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Label4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(72, 72, 72))
         );
         Tab3Layout.setVerticalGroup(
             Tab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tab3Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+            .addGroup(Tab3Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addComponent(Label4)
-                .addGap(18, 18, 18))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/button.png"))); // NOI18N
-        exitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        EXIT.setBackground(new java.awt.Color(153, 0, 0));
+        EXIT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitBtnMouseClicked(evt);
+                EXITMouseClicked(evt);
             }
         });
+
+        Label5.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        Label5.setForeground(new java.awt.Color(255, 255, 255));
+        Label5.setLabelFor(EXIT);
+        Label5.setText("    E X I T");
+
+        javax.swing.GroupLayout EXITLayout = new javax.swing.GroupLayout(EXIT);
+        EXIT.setLayout(EXITLayout);
+        EXITLayout.setHorizontalGroup(
+            EXITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EXITLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(Label5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        EXITLayout.setVerticalGroup(
+            EXITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EXITLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(Label5)
+                .addGap(16, 16, 16))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,9 +217,9 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(Tab2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Tab3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(exitBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(EXIT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,9 +230,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(Tab2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Tab3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
-                .addComponent(exitBtn)
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                .addComponent(EXIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel7.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 200, 550));
@@ -402,50 +409,20 @@ public class Menu extends javax.swing.JFrame {
         Tab3.setBackground(on);
     }//GEN-LAST:event_Tab3MouseClicked
 
-    private void Tab1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab1MouseEntered
-        Tab1.setBackground(new Color(34, 157, 240));
-        Label2.setForeground(new Color(252, 252, 252));
-    }//GEN-LAST:event_Tab1MouseEntered
-
-    private void Tab1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab1MouseExited
-        Tab1.setBackground(new Color(33, 34, 38));
-        Label2.setForeground(new Color(255, 255, 255));
-    }//GEN-LAST:event_Tab1MouseExited
-
-    private void Tab2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab2MouseEntered
-        Tab2.setBackground(new Color(34, 157, 240));
-        Label3.setForeground(new Color(252, 252, 252));
-    }//GEN-LAST:event_Tab2MouseEntered
-
-    private void Tab2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab2MouseExited
-        Tab2.setBackground(new Color(33, 34, 38));
-        Label3.setForeground(new Color(255, 255, 255));
-    }//GEN-LAST:event_Tab2MouseExited
-
-    private void Tab3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab3MouseEntered
-        Tab3.setBackground(new Color(34, 157, 240));
-        Label4.setForeground(new Color(252, 252, 252));
-    }//GEN-LAST:event_Tab3MouseEntered
-
     private void Tab2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab2MouseClicked
-        jTabbedPane1.setSelectedIndex(0);
-        Tab1.setBackground(on);
-        Tab2.setBackground(off);
+        jTabbedPane1.setSelectedIndex(1);
+        Tab1.setBackground(off);
+        Tab2.setBackground(on);
         Tab3.setBackground(off);
     }//GEN-LAST:event_Tab2MouseClicked
-
-    private void Tab3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab3MouseExited
-        Tab3.setBackground(new Color(33, 34, 38));
-        Label4.setForeground(new Color(255, 255, 255));
-    }//GEN-LAST:event_Tab3MouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void exitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_exitBtnMouseClicked
+    private void EXITMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXITMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EXITMouseClicked
 
     /**
      * @param args the command line arguments
@@ -483,14 +460,15 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel EXIT;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
+    private javax.swing.JLabel Label5;
     private javax.swing.JPanel Tab1;
     private javax.swing.JPanel Tab2;
     private javax.swing.JPanel Tab3;
-    private javax.swing.JLabel exitBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
