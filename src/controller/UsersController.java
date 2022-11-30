@@ -8,10 +8,6 @@ import java.sql.ResultSet;
 import koneksi.Koneksi;
 import model.Users;
 
-/**
- *
- * @author DIMAS
- */
 public class UsersController {
     public String cekUsername(String username){
         String hasil = "yes";
@@ -30,7 +26,7 @@ public class UsersController {
         }
         return hasil;
     }
-    
+      
     public int insertUser(Users user) {
         try {
             Connection con = Koneksi.getConnection();

@@ -1,4 +1,5 @@
 
+import controller.UsersController;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,21 +18,14 @@ import koneksi.Koneksi;
  * @author PED
  */
 public class Login extends javax.swing.JFrame {
+    private UsersController userCtrl;
     
     /**
      * Creates new form index
      */
     public Login() {
         initComponents();
-//        try {            
-//            //Buat koneksi ke DB
-//            Connection con = Koneksi.getConnection();
-//            System.out.println(con);
-//            //Buat statement
-////            Statement st = con.createStatement();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
+        userCtrl = new UsersController();
     }
     
     /**
@@ -83,11 +77,6 @@ public class Login extends javax.swing.JFrame {
 
         username.setForeground(new java.awt.Color(153, 153, 153));
         username.setBorder(null);
-        username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/padlock.png"))); // NOI18N
@@ -95,11 +84,6 @@ public class Login extends javax.swing.JFrame {
 
         password.setForeground(new java.awt.Color(0, 204, 0));
         password.setBorder(null);
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 204, 0));
@@ -126,11 +110,6 @@ public class Login extends javax.swing.JFrame {
         loginbtn.setFont(new java.awt.Font("Montserrat ExtraBold", 0, 12)); // NOI18N
         loginbtn.setForeground(new java.awt.Color(255, 255, 255));
         loginbtn.setText("L O G I N");
-        loginbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginbtnMouseClicked(evt);
-            }
-        });
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbtnActionPerformed(evt);
@@ -225,19 +204,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
-
     private void registerclickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerclickMouseClicked
-        // TODO add your handling code here:
         this.dispose();
-        new Registrasi().setVisible(true);
-        
+        new Registrasi().setVisible(true);    
     }//GEN-LAST:event_registerclickMouseClicked
 
     private void registerclickMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerclickMouseEntered
@@ -249,12 +218,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registerclickMouseExited
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginbtnActionPerformed
-
-    private void loginbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginbtnMouseClicked
-        // TODO add your handling code here:
-        String u = username.getText();
+String u = username.getText();
         String p = new String(password.getPassword());
         
         try {
@@ -271,6 +235,9 @@ public class Login extends javax.swing.JFrame {
             if (rs.next()){
                 if (u.equals(rs.getString("username")) && p.equals(rs.getString("password"))){
                     JOptionPane.showMessageDialog(this, "Login Berhasil");
+
+                    this.dispose();
+                    new MenuUser(u).setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Username atau password anda salah!");   
@@ -278,7 +245,7 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-    }//GEN-LAST:event_loginbtnMouseClicked
+    }//GEN-LAST:event_loginbtnActionPerformed
 
     /**
      * @param args the command line arguments

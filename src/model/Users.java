@@ -2,7 +2,6 @@
 package model;
 
 public class Users {
-    private int id_user;
     private String username;
     private String password;
     private String nama;
@@ -11,10 +10,6 @@ public class Users {
         this.username = username;
         this.password = password;
         this.nama = nama;
-    }
-    
-    public int getId_user() {
-        return id_user;
     }
 
     public String getUsername() {

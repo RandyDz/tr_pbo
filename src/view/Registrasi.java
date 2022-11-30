@@ -76,16 +76,6 @@ public class Registrasi extends javax.swing.JFrame {
         createUsername.setForeground(new java.awt.Color(153, 153, 153));
         createUsername.setBorder(null);
         createUsername.setOpaque(true);
-        createUsername.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                createUsernameMouseClicked(evt);
-            }
-        });
-        createUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createUsernameActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/padlock.png"))); // NOI18N
@@ -116,16 +106,6 @@ public class Registrasi extends javax.swing.JFrame {
         createName.setForeground(new java.awt.Color(153, 153, 153));
         createName.setBorder(null);
         createName.setOpaque(true);
-        createName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                createNameMouseClicked(evt);
-            }
-        });
-        createName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createNameActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Back to ");
@@ -242,24 +222,7 @@ public class Registrasi extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createUsernameActionPerformed
-
-    private void createUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createUsernameMouseClicked
-        createUsername.setText("");
-    }//GEN-LAST:event_createUsernameMouseClicked
-
-    private void createNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createNameMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createNameMouseClicked
-
-    private void createNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createNameActionPerformed
-
     private void loginLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginLabelMouseClicked
-        // TODO add your handling code here:
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_loginLabelMouseClicked
@@ -300,7 +263,6 @@ public class Registrasi extends javax.swing.JFrame {
                         }
                     }
                 }
-
             }
         } else {
             JOptionPane.showMessageDialog(this, "Lengkapi atribut!");

@@ -1,5 +1,13 @@
 
+import controller.BukuController;
+import controller.PinjamanController;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Buku;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -9,20 +17,46 @@ import java.awt.Color;
  *
  * @author DIMAS
  */
-public class Menu extends javax.swing.JFrame {
-
+public class MenuUser extends javax.swing.JFrame {
+    private BukuController bukuCtrl;
+    private PinjamanController pjmCtrl;
+    String Username;
+    List<Buku> ls;
+    
     Color off = new Color(33, 34, 38);//IRENG
     Color on = new Color(102, 102, 102);//abu2
-    
 
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public MenuUser() {
         initComponents();
-        Tab1.setBackground(on);
-        
     }
+    
+    public MenuUser(String u){
+        initComponents();
+        pjmCtrl = new PinjamanController();
+        bukuCtrl = new BukuController();
+        Tab1.setBackground(on); 
+        
+        DaftarBuku();
+        
+        Username = u;
+        username.setText(Username);
+    }
+    
+    public void DaftarBuku(){
+        ls = bukuCtrl.readAll();
+        String data[][] = new String[ls.size()][5];
+        for (int i = 0; i < ls.size(); i++) {
+            data[i][0] = (i+1) + "";
+            data[i][1] = ls.get(i).getId_buku() + "";
+            data[i][2] = ls.get(i).getJudul_buku();
+            data[i][3] = ls.get(i).getKategori();
+            data[i][4] = ls.get(i).getJumlah_buku() + "";
+        }
+        jTable1.setModel(new DefaultTableModel(data, new String[]{"no","id_buku","judul_buku","kategori","jumlah_buku"}));
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +70,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         Label1 = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         Tab1 = new javax.swing.JPanel();
         Label2 = new javax.swing.JLabel();
@@ -49,14 +84,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        Keranjang = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        Simpan = new javax.swing.JButton();
+        Hapus = new javax.swing.JButton();
+        Cetak = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -72,6 +106,8 @@ public class Menu extends javax.swing.JFrame {
         Label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/bookshelf (1).png"))); // NOI18N
         Label1.setText("e-Perpustakaan");
 
+        username.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -79,13 +115,17 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(760, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 658, Short.MAX_VALUE)
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(username))
                 .addContainerGap())
         );
 
@@ -230,7 +270,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(Tab2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Tab3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                 .addComponent(EXIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -255,13 +295,13 @@ public class Menu extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(4).setMaxWidth(70);
         }
 
-        jButton1.setBackground(new java.awt.Color(185, 253, 76));
-        jButton1.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/purchase.png"))); // NOI18N
-        jButton1.setText("  Masukkan Keranjang");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Keranjang.setBackground(new java.awt.Color(185, 253, 76));
+        Keranjang.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        Keranjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/purchase.png"))); // NOI18N
+        Keranjang.setText("  Masukkan Keranjang");
+        Keranjang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                KeranjangActionPerformed(evt);
             }
         });
 
@@ -273,7 +313,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Keranjang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -282,7 +322,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Keranjang, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -307,20 +347,31 @@ public class Menu extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(4).setMaxWidth(70);
         }
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setText("Simpan");
-        jButton2.setBorder(null);
+        Simpan.setBackground(new java.awt.Color(51, 153, 255));
+        Simpan.setText("Simpan");
+        Simpan.setBorder(null);
+        Simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SimpanActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 51, 51));
-        jButton3.setText("Hapus");
-        jButton3.setBorder(null);
+        Hapus.setBackground(new java.awt.Color(255, 51, 51));
+        Hapus.setText("Hapus");
+        Hapus.setBorder(null);
+        Hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HapusActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 0));
-        jButton4.setText("Edit");
-        jButton4.setBorder(null);
-
-        jButton5.setText("Cetak");
-        jButton5.setBorder(null);
+        Cetak.setText("Cetak");
+        Cetak.setBorder(null);
+        Cetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CetakActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -331,13 +382,11 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Cetak, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -347,10 +396,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Simpan, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                    .addComponent(Hapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Cetak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -402,13 +450,6 @@ public class Menu extends javax.swing.JFrame {
         Tab3.setBackground(off);
     }//GEN-LAST:event_Tab1MouseClicked
 
-    private void Tab3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab3MouseClicked
-        jTabbedPane1.setSelectedIndex(2);
-        Tab1.setBackground(off);
-        Tab2.setBackground(off);
-        Tab3.setBackground(on);
-    }//GEN-LAST:event_Tab3MouseClicked
-
     private void Tab2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab2MouseClicked
         jTabbedPane1.setSelectedIndex(1);
         Tab1.setBackground(off);
@@ -416,12 +457,63 @@ public class Menu extends javax.swing.JFrame {
         Tab3.setBackground(off);
     }//GEN-LAST:event_Tab2MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Tab3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tab3MouseClicked
+        jTabbedPane1.setSelectedIndex(2);
+        Tab1.setBackground(off);
+        Tab2.setBackground(off);
+        Tab3.setBackground(on);
+    }//GEN-LAST:event_Tab3MouseClicked
+
+    private void KeranjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeranjangActionPerformed
+        int row = jTable1.getSelectedRow();
+        
+        int no = jTable2.getRowCount()+1;
+        String idBuku = jTable1.getValueAt(row, 1).toString();
+        String judulBuku = jTable1.getValueAt(row, 2).toString();
+        String kategori = jTable1.getValueAt(row, 3).toString();
+        int jumlah = 1;
+        
+        DefaultTableModel tabModel = new DefaultTableModel();
+        tabModel = (DefaultTableModel) jTable2.getModel();
+        tabModel.addRow(new Object [] {no, "" + idBuku , "" + judulBuku, "" + kategori, jumlah});
+    }//GEN-LAST:event_KeranjangActionPerformed
+
+    private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
+        int row = jTable2.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.removeRow(row);        
+    }//GEN-LAST:event_HapusActionPerformed
+
+    private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, 7);
+        
+        String tglPinjam = java.time.LocalDate.now().toString();
+        String tglKembali = sdf.format(cal.getTime()); 
+        
+        if (pjmCtrl.cekPinjaman(Username, tglPinjam) == 0){
+            pjmCtrl.SimpanPinjaman(Username, tglPinjam, tglKembali);
+            for (int i = 0; i < jTable2.getRowCount(); i++) {
+                int idPinjaman = pjmCtrl.getIdPinjaman(Username, tglPinjam);
+                String idBuku = jTable2.getValueAt(i, 1).toString();
+                int jumlah = Integer.parseInt(jTable2.getValueAt(i, 4).toString());
+                
+                pjmCtrl.simpanDetailPinjaman(idPinjaman, idBuku, jumlah);
+                bukuCtrl.updateStok(idBuku, jumlah);
+                JOptionPane.showMessageDialog(this,"Simpan Berhasil...\nSilahkan cetak nota pinjaman");
+            }   
+        } else {
+            JOptionPane.showMessageDialog(this,"Kamu dah pinjem yaa hari ini..");
+        } 
+    }//GEN-LAST:event_SimpanActionPerformed
+
+    private void CetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_CetakActionPerformed
 
     private void EXITMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXITMouseClicked
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_EXITMouseClicked
 
     /**
@@ -441,39 +533,39 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new MenuUser().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cetak;
     private javax.swing.JPanel EXIT;
+    private javax.swing.JButton Hapus;
+    private javax.swing.JButton Keranjang;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
     private javax.swing.JLabel Label4;
     private javax.swing.JLabel Label5;
+    private javax.swing.JButton Simpan;
     private javax.swing.JPanel Tab1;
     private javax.swing.JPanel Tab2;
     private javax.swing.JPanel Tab3;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -486,5 +578,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
 }

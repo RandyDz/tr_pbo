@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
-/**
- *
- * @author DIMAS
- */
 public class Detail_Pinjaman {
     private int id_pinjaman;
-    private int id_buku;
+    private String id_buku;
     private int jumlah_pinjam;
 
-    public Detail_Pinjaman(int id_pinjaman, int id_buku, int jumlah_pinjam) {
-        this.id_pinjaman = id_pinjaman;
+    public Detail_Pinjaman( String id_buku, int jumlah_pinjam) {
         this.id_buku = id_buku;
         this.jumlah_pinjam = jumlah_pinjam;
     }
@@ -27,11 +19,11 @@ public class Detail_Pinjaman {
         this.id_pinjaman = id_pinjaman;
     }
 
-    public int getId_buku() {
+    public String getId_buku() {
         return id_buku;
     }
 
-    public void setId_buku(int id_buku) {
+    public void setId_buku(String id_buku) {
         this.id_buku = id_buku;
     }
 
