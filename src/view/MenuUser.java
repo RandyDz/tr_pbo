@@ -18,11 +18,12 @@ import model.Buku;
  * @author DIMAS
  */
 public class MenuUser extends javax.swing.JFrame {
+
     private BukuController bukuCtrl;
     private PinjamanController pjmCtrl;
     String Username;
     List<Buku> ls;
-    
+
     Color off = new Color(33, 34, 38);//IRENG
     Color on = new Color(102, 102, 102);//abu2
 
@@ -32,31 +33,31 @@ public class MenuUser extends javax.swing.JFrame {
     public MenuUser() {
         initComponents();
     }
-    
-    public MenuUser(String u){
+
+    public MenuUser(String u) {
         initComponents();
         pjmCtrl = new PinjamanController();
         bukuCtrl = new BukuController();
-        Tab1.setBackground(on); 
-        
+        Tab1.setBackground(on);
+
         DaftarBuku();
-        
+
         Username = u;
         username.setText(Username);
     }
-    
-    public void DaftarBuku(){
+
+    public void DaftarBuku() {
         ls = bukuCtrl.readAll();
         String data[][] = new String[ls.size()][5];
         for (int i = 0; i < ls.size(); i++) {
-            data[i][0] = (i+1) + "";
+            data[i][0] = (i + 1) + "";
             data[i][1] = ls.get(i).getId_buku() + "";
             data[i][2] = ls.get(i).getJudul_buku();
             data[i][3] = ls.get(i).getKategori();
             data[i][4] = ls.get(i).getJumlah_buku() + "";
         }
-        jTable1.setModel(new DefaultTableModel(data, new String[]{"no","id_buku","judul_buku","kategori","jumlah_buku"}));
-    } 
+        jTable1.setModel(new DefaultTableModel(data, new String[]{"no", "id_buku", "judul_buku", "kategori", "jumlah_buku"}));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,7 +107,9 @@ public class MenuUser extends javax.swing.JFrame {
         Label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/bookshelf (1).png"))); // NOI18N
         Label1.setText("e-Perpustakaan");
 
-        username.setText("jLabel1");
+        username.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/user.png"))); // NOI18N
+        username.setText(" jLabel1");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -115,18 +118,20 @@ public class MenuUser extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 658, Short.MAX_VALUE)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 656, Short.MAX_VALUE)
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(username))
+                .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(username)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel7.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 50));
@@ -466,46 +471,48 @@ public class MenuUser extends javax.swing.JFrame {
 
     private void KeranjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeranjangActionPerformed
         int row = jTable1.getSelectedRow();
-        
-        int no = jTable2.getRowCount()+1;
+
+        int no = jTable2.getRowCount() + 1;
         String idBuku = jTable1.getValueAt(row, 1).toString();
         String judulBuku = jTable1.getValueAt(row, 2).toString();
         String kategori = jTable1.getValueAt(row, 3).toString();
         int jumlah = 1;
-        
+
         DefaultTableModel tabModel = new DefaultTableModel();
         tabModel = (DefaultTableModel) jTable2.getModel();
-        tabModel.addRow(new Object [] {no, "" + idBuku , "" + judulBuku, "" + kategori, jumlah});
+        tabModel.addRow(new Object[]{no, "" + idBuku, "" + judulBuku, "" + kategori, jumlah});
     }//GEN-LAST:event_KeranjangActionPerformed
 
     private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
         int row = jTable2.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.removeRow(row);        
+        model.removeRow(row);
     }//GEN-LAST:event_HapusActionPerformed
 
     private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, 7);
-        
+
         String tglPinjam = java.time.LocalDate.now().toString();
-        String tglKembali = sdf.format(cal.getTime()); 
-        
-        if (pjmCtrl.cekPinjaman(Username, tglPinjam) == 0){
+        String tglKembali = sdf.format(cal.getTime());
+
+        if (pjmCtrl.cekPinjaman(Username, tglPinjam) == 0) {
             pjmCtrl.SimpanPinjaman(Username, tglPinjam, tglKembali);
             for (int i = 0; i < jTable2.getRowCount(); i++) {
                 int idPinjaman = pjmCtrl.getIdPinjaman(Username, tglPinjam);
                 String idBuku = jTable2.getValueAt(i, 1).toString();
                 int jumlah = Integer.parseInt(jTable2.getValueAt(i, 4).toString());
-                
+
                 pjmCtrl.simpanDetailPinjaman(idPinjaman, idBuku, jumlah);
                 bukuCtrl.updateStok(idBuku, jumlah);
-                JOptionPane.showMessageDialog(this,"Simpan Berhasil...\nSilahkan cetak nota pinjaman");
-            }   
+
+            }
+            JOptionPane.showMessageDialog(this, "Simpan Berhasil...\nSilahkan cetak nota pinjaman");
         } else {
-            JOptionPane.showMessageDialog(this,"Kamu dah pinjem yaa hari ini..");
-        } 
+            JOptionPane.showMessageDialog(this, "Kamu dah pinjem yaa hari ini..");
+        }
+        DaftarBuku();
     }//GEN-LAST:event_SimpanActionPerformed
 
     private void CetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakActionPerformed

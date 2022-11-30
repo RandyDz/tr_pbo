@@ -40,7 +40,7 @@ public class BukuController {
         try {
             Connection con = Koneksi.getConnection();
             Statement st = con.createStatement();
-            String query = "UPDATE buku SET jumlah='"+ jmlBaru +"' WHERE ";
+            String query = "UPDATE buku SET jumlah_buku= "+ jmlBaru +" WHERE id_buku = '"+id_buku +"';";
             st.executeUpdate(query);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -51,10 +51,10 @@ public class BukuController {
         try {
             Connection con = Koneksi.getConnection();
             Statement st = con.createStatement();
-            String query = "SELECT jumlah FROM pinjaman WHERE id_buku = '"+ id_buku +"';";
+            String query = "SELECT jumlah_buku FROM buku WHERE id_buku = '"+ id_buku +"';";
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
-                return rs.getInt("jumlah");
+                return rs.getInt("jumlah_buku");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
