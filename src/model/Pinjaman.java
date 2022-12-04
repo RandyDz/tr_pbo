@@ -8,11 +8,14 @@ public class Pinjaman {
     private String tgl_kembali;
     private String status;
 
-    public Pinjaman(int id_pinjaman, String username, String tgl_pinjam, String tgl_kembali) {
+
+    public Pinjaman(int id_pinjaman, String username, String tgl_pinjam, String tgl_kembali, String status) {
         this.id_pinjaman = id_pinjaman;
         this.username = username;
         this.tgl_pinjam = tgl_pinjam;
         this.tgl_kembali = tgl_kembali;
+
+        this.status = status;
     }
 
     public int getId_pinjaman() {

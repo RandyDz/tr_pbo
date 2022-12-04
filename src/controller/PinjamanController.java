@@ -23,8 +23,9 @@ public class PinjamanController {
                 Pinjaman p = new Pinjaman(
                         rs.getInt("id_pinjaman"),
                         rs.getString("username"), 
-                        rs.getString("tgl_pinjam"), 
-                        rs.getString("tgl_kembali")
+                        rs.getString("tgl_pinjam"),
+                        rs.getString("tgl_kembali"),
+                        rs.getString("status")
                 );
                 ls.add(p);
             }
