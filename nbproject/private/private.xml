@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/view/Registrasi.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/view/MenuAdmin.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/model/Buku.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/model/Detail_Pinjaman.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/model/Users.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/view/MenuUser.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/model/Pinjaman.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/controller/UsersController.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/controller/PinjamanController.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/controller/BukuController.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/model/Admin.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/view/Login.java</file>
-            <file>file:/C:/Users/DIMAS/Documents/NetBeansProjects/TR_PBO/src/controller/AdminController.java</file>
+            <file>file:/C:/Users/PED/OneDrive/Desktop/kuliah%20le/github_pbo/perpus_pbo/src/view/Login.java</file>
+            <file>file:/C:/Users/PED/OneDrive/Desktop/kuliah%20le/github_pbo/perpus_pbo/src/view/MenuUser.java</file>
+            <file>file:/C:/Users/PED/OneDrive/Desktop/kuliah%20le/github_pbo/perpus_pbo/src/view/MenuAdmin.java</file>
+            <file>file:/C:/Users/PED/OneDrive/Desktop/kuliah%20le/github_pbo/perpus_pbo/src/view/Registrasi.java</file>
         </group>
     </open-files>
 </project-private>
