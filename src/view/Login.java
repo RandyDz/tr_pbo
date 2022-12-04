@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import koneksi.Koneksi;
+import view.MenuAdmin;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -236,8 +237,13 @@ String u = username.getText();
                 if (u.equals(rs.getString("username")) && p.equals(rs.getString("password"))){
                     JOptionPane.showMessageDialog(this, "Login Berhasil");
 
-                    this.dispose();
-                    new MenuUser(u).setVisible(true);
+                    if (u.equals("admin")){
+                        this.dispose();
+                        new MenuAdmin(u).setVisible(true);
+                    } else {
+                        this.dispose();
+                        new MenuUser(u).setVisible(true);
+                    }
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Username atau password anda salah!");   
