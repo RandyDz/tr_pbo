@@ -1,10 +1,15 @@
-
+package view;
 import controller.BukuController;
 import controller.PinjamanController;
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Buku;
@@ -381,6 +386,7 @@ public class MenuUser extends javax.swing.JFrame {
             }
         });
 
+        Cetak.setBackground(new java.awt.Color(204, 204, 204));
         Cetak.setText("Cetak");
         Cetak.setBorder(null);
         Cetak.addActionListener(new java.awt.event.ActionListener() {
@@ -640,7 +646,18 @@ public class MenuUser extends javax.swing.JFrame {
     }//GEN-LAST:event_SimpanActionPerformed
 
     private void CetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakActionPerformed
-        // TODO add your handling code here:
+        
+        try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+                writer.write("Username: " + Username+"\n");
+                writer.write("Detail pinjaman: " +pjmCtrl.readDetailPinjaman(Username));
+                writer.close();
+            
+           
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_CetakActionPerformed
 
     private void EXITMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EXITMouseClicked

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import koneksi.Koneksi;
 import view.MenuAdmin;
+import view.MenuUser;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
