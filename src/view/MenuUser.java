@@ -15,14 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Buku;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author DIMAS
- */
 public class MenuUser extends javax.swing.JFrame {
 
     private BukuController bukuCtrl;
@@ -624,7 +616,7 @@ public class MenuUser extends javax.swing.JFrame {
 
     private void KeranjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeranjangActionPerformed
         int row = jTable1.getSelectedRow();
-        if (row < 1){
+        if (row < 0) {
             JOptionPane.showMessageDialog(this, "Pilih baris untuk menambahkan ke keranjang!");
         } else {
             int no = jTable2.getRowCount() + 1;
@@ -634,7 +626,7 @@ public class MenuUser extends javax.swing.JFrame {
             int stok = Integer.parseInt(jTable1.getValueAt(row, 4).toString());
             int jumlah = 1;
 
-            if(stok <= 0){
+            if (stok <= 0) {
                 JOptionPane.showMessageDialog(this, "Stok buku kosong\nSilahkan pilih buku lainnya");
             } else {
                 DefaultTableModel tabModel = new DefaultTableModel();
@@ -646,7 +638,7 @@ public class MenuUser extends javax.swing.JFrame {
 
     private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
         int row = jTable2.getSelectedRow();
-        if (row < 1){
+        if (row < 0) {
             JOptionPane.showMessageDialog(this, "Pilih baris yang akan dihapus!");
         } else {
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
@@ -662,7 +654,7 @@ public class MenuUser extends javax.swing.JFrame {
         String tglPinjam = java.time.LocalDate.now().toString();
         String tglKembali = sdf.format(cal.getTime());
 
-        if (jTable2.getRowCount() == 0){
+        if (jTable2.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Silahkan pillih buku!");
         } else {
             if (pjmCtrl.cekPinjaman(Username, tglPinjam) == 0) {
@@ -685,37 +677,41 @@ public class MenuUser extends javax.swing.JFrame {
     }//GEN-LAST:event_SimpanActionPerformed
 
     private void CetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakActionPerformed
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_MONTH, 7);
-        String tglPinjam = java.time.LocalDate.now().toString();
-        String tglKembali = sdf.format(cal.getTime());
+        if (jTable2.getRowCount() < 1) {
+            JOptionPane.showMessageDialog(this, "Daftar pinjaman masih kosong\nSilahkan Pilih buku");
+        } else {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DAY_OF_MONTH, 7);
+            String tglPinjam = java.time.LocalDate.now().toString();
+            String tglKembali = sdf.format(cal.getTime());
 
-        try {
-            String fileName = "C:\\Users\\PED\\OneDrive\\Desktop\\kuliah le\\github_pbo\\perpus_pbo\\cetakstruk\\"+Username+"-"+tglPinjam+".txt";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-            writer.write("\t\te-PERPUSTAKAAN\n");
-            writer.write("\tSalatiga City, AnjazzzKelazz\n");
-            writer.write("==================================================\n");
-            writer.write("\nUsername: " + Username);
-            writer.write("\nTanggal pinjam : " + tglPinjam);
-            writer.write("\nTanggal kembali : " + tglKembali);
-            writer.write("\nJumlah Pinjaman : " + jTable2.getRowCount());
-            writer.write("\n\nDetail Pinjaman : ");
-            writer.newLine();
-            for (int i = 0; i < jTable2.getRowCount(); i++) {
-                String jumlah = jTable2.getValueAt(i, 4).toString();
-                String idBuku = jTable2.getValueAt(i, 1).toString();
-                String judulBuku = jTable2.getValueAt(i, 2).toString();
-                writer.write((i + 1) + ". " + jumlah + " " + idBuku + " " + judulBuku + "\n");
+            try {
+                String fileName = "C:\\Users\\DIMAS\\Documents\\NetBeansProjects\\TR_PBO\\cetakstruk\\" + Username + "-" + tglPinjam + ".txt";
+                BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+                writer.write("\t\te-PERPUSTAKAAN\n");
+                writer.write("\tSalatiga City, AnjazzzKelazz\n");
+                writer.write("==================================================\n");
+                writer.write("\nUsername: " + Username);
+                writer.write("\nTanggal pinjam : " + tglPinjam);
+                writer.write("\nTanggal kembali : " + tglKembali);
+                writer.write("\nJumlah Pinjaman : " + jTable2.getRowCount());
+                writer.write("\n\nDetail Pinjaman : ");
+                writer.newLine();
+                for (int i = 0; i < jTable2.getRowCount(); i++) {
+                    String jumlah = jTable2.getValueAt(i, 4).toString();
+                    String idBuku = jTable2.getValueAt(i, 1).toString();
+                    String judulBuku = jTable2.getValueAt(i, 2).toString();
+                    writer.write((i + 1) + ". " + jumlah + " " + idBuku + " " + judulBuku + "\n");
 
+                }
+
+                JOptionPane.showMessageDialog(this, "Struk berhasil di cetak");
+                writer.close();
+
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
             }
-
-            JOptionPane.showMessageDialog(this, "Struk berhasil di cetak");
-            writer.close();
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_CetakActionPerformed
 
