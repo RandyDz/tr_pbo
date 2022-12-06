@@ -73,7 +73,6 @@ public class Registrasi extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/user.png"))); // NOI18N
         jLabel3.setText("Username");
 
-        createUsername.setForeground(new java.awt.Color(153, 153, 153));
         createUsername.setBorder(null);
         createUsername.setOpaque(true);
 
@@ -103,7 +102,6 @@ public class Registrasi extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/user.png"))); // NOI18N
         jLabel6.setText("Name");
 
-        createName.setForeground(new java.awt.Color(153, 153, 153));
         createName.setBorder(null);
         createName.setOpaque(true);
 

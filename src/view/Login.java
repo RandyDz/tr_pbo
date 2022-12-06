@@ -77,14 +77,12 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/user.png"))); // NOI18N
         jLabel2.setText("Username");
 
-        username.setForeground(new java.awt.Color(153, 153, 153));
         username.setBorder(null);
 
         jLabel3.setFont(new java.awt.Font("Montserrat", 1, 12)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/image/padlock.png"))); // NOI18N
         jLabel3.setText("Password");
 
-        password.setForeground(new java.awt.Color(0, 204, 0));
         password.setBorder(null);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
