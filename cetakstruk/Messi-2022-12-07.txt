@@ -1,0 +1,12 @@
+		e-PERPUSTAKAAN
+	Salatiga City, AnjazzzKelazz
+==================================================
+
+Username: Messi
+Tanggal pinjam : 2022-12-07
+Tanggal kembali : 2022-12-14
+Jumlah Pinjaman : 2
+
+Detail Pinjaman : 
+1. 1 b001 Ayat-ayat Cinta
+2. 1 b002 Dilan 1990

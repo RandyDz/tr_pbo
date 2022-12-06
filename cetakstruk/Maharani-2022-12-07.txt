@@ -1,0 +1,13 @@
+		e-PERPUSTAKAAN
+	Salatiga City, AnjazzzKelazz
+==================================================
+
+Username: Maharani
+Tanggal pinjam : 2022-12-07
+Tanggal kembali : 2022-12-14
+Jumlah Pinjaman : 3
+
+Detail Pinjaman : 
+1. 1 b015 Soekarno
+2. 1 b005 Sebuah Seni untuk Bersikap Bodo Amat
+3. 1 b006 Tips Sukses Ternak Lele

@@ -1,0 +1,13 @@
+		e-PERPUSTAKAAN
+	Salatiga City, AnjazzzKelazz
+==================================================
+
+Username: maimin
+Tanggal pinjam : 2022-12-07
+Tanggal kembali : 2022-12-14
+Jumlah Pinjaman : 3
+
+Detail Pinjaman : 
+1. 1 b008 5 CM
+2. 1 b009 Dari penjara ke penjara
+3. 1 b007 Garis waktu
