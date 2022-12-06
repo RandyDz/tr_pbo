@@ -601,22 +601,34 @@ public class MenuUser extends javax.swing.JFrame {
 
     private void KeranjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KeranjangActionPerformed
         int row = jTable1.getSelectedRow();
+        if (row < 1){
+            JOptionPane.showMessageDialog(this, "Pilih baris untuk menambahkan ke keranjang!");
+        } else {
+            int no = jTable2.getRowCount() + 1;
+            String idBuku = jTable1.getValueAt(row, 1).toString();
+            String judulBuku = jTable1.getValueAt(row, 2).toString();
+            String kategori = jTable1.getValueAt(row, 3).toString();
+            int stok = Integer.parseInt(jTable1.getValueAt(row, 4).toString());
+            int jumlah = 1;
 
-        int no = jTable2.getRowCount() + 1;
-        String idBuku = jTable1.getValueAt(row, 1).toString();
-        String judulBuku = jTable1.getValueAt(row, 2).toString();
-        String kategori = jTable1.getValueAt(row, 3).toString();
-        int jumlah = 1;
-
-        DefaultTableModel tabModel = new DefaultTableModel();
-        tabModel = (DefaultTableModel) jTable2.getModel();
-        tabModel.addRow(new Object[]{no, "" + idBuku, "" + judulBuku, "" + kategori, jumlah});
+            if(stok <= 0){
+                JOptionPane.showMessageDialog(this, "Stok buku kosong\nSilahkan pilih buku lainnya");
+            } else {
+                DefaultTableModel tabModel = new DefaultTableModel();
+                tabModel = (DefaultTableModel) jTable2.getModel();
+                tabModel.addRow(new Object[]{no, "" + idBuku, "" + judulBuku, "" + kategori, jumlah});
+            }
+        }
     }//GEN-LAST:event_KeranjangActionPerformed
 
     private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
         int row = jTable2.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.removeRow(row);
+        if (row < 1){
+            JOptionPane.showMessageDialog(this, "Pilih baris yang akan dihapus!");
+        } else {
+            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.removeRow(row);
+        }
     }//GEN-LAST:event_HapusActionPerformed
 
     private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
@@ -627,22 +639,26 @@ public class MenuUser extends javax.swing.JFrame {
         String tglPinjam = java.time.LocalDate.now().toString();
         String tglKembali = sdf.format(cal.getTime());
 
-        if (pjmCtrl.cekPinjaman(Username, tglPinjam) == 0) {
-            pjmCtrl.SimpanPinjaman(Username, tglPinjam, tglKembali);
-            for (int i = 0; i < jTable2.getRowCount(); i++) {
-                int idPinjaman = pjmCtrl.getIdPinjaman(Username, tglPinjam);
-                String idBuku = jTable2.getValueAt(i, 1).toString();
-                int jumlah = Integer.parseInt(jTable2.getValueAt(i, 4).toString());
-
-                pjmCtrl.simpanDetailPinjaman(idPinjaman, idBuku, jumlah);
-                bukuCtrl.dipinjam(idBuku, jumlah);
-
-            }
-            JOptionPane.showMessageDialog(this, "Simpan Berhasil...\nSilahkan cetak nota pinjaman");
+        if (jTable2.getRowCount() == 0){
+            JOptionPane.showMessageDialog(this, "Silahkan pillih buku!");
         } else {
-            JOptionPane.showMessageDialog(this, "Kamu dah pinjem yaa hari ini..");
+            if (pjmCtrl.cekPinjaman(Username, tglPinjam) == 0) {
+                pjmCtrl.SimpanPinjaman(Username, tglPinjam, tglKembali);
+                for (int i = 0; i < jTable2.getRowCount(); i++) {
+                    int idPinjaman = pjmCtrl.getIdPinjaman(Username, tglPinjam);
+                    String idBuku = jTable2.getValueAt(i, 1).toString();
+                    int jumlah = Integer.parseInt(jTable2.getValueAt(i, 4).toString());
+
+                    pjmCtrl.simpanDetailPinjaman(idPinjaman, idBuku, jumlah);
+                    bukuCtrl.dipinjam(idBuku, jumlah);
+
+                }
+                JOptionPane.showMessageDialog(this, "Simpan Berhasil...\nSilahkan cetak nota pinjaman");
+            } else {
+                JOptionPane.showMessageDialog(this, "Kamu dah pinjem yaa hari ini..");
+            }
+            DaftarBuku();
         }
-        DaftarBuku();
     }//GEN-LAST:event_SimpanActionPerformed
 
     private void CetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakActionPerformed

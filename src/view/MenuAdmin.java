@@ -666,6 +666,8 @@ public class MenuAdmin extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Kategori");
 
+        jTextField7.setText("0");
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Stok");
 
@@ -1000,29 +1002,40 @@ public class MenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_TambahBukuActionPerformed
 
     private void EditBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditBukuActionPerformed
-        jTabbedPane1.setSelectedIndex(4);
+        EditID.setEditable(false);
         int row = jTable1.getSelectedRow();
         
-        EditID.setText(jTable1.getValueAt(row, 1).toString());
-        EditJudul.setText(jTable1.getValueAt(row, 2).toString());
-        if("fiksi".equals(jTable1.getValueAt(row, 3).toString())){
-            EditKategori.setSelectedIndex(0);
-        } else if("non-fiksi".equals(jTable1.getValueAt(row, 3).toString())){
-            EditKategori.setSelectedIndex(1);
+        if (row < 1){
+            JOptionPane.showMessageDialog(this, "Pilih baris yang akan diedit!");
+        } else {
+             jTabbedPane1.setSelectedIndex(4);
+        
+            EditID.setText(jTable1.getValueAt(row, 1).toString());
+            EditJudul.setText(jTable1.getValueAt(row, 2).toString());
+            if("fiksi".equals(jTable1.getValueAt(row, 3).toString())){
+                EditKategori.setSelectedIndex(0);
+            } else if("non-fiksi".equals(jTable1.getValueAt(row, 3).toString())){
+                EditKategori.setSelectedIndex(1);
+            }
+            EditStok.setText(jTable1.getValueAt(row, 4).toString());
         }
-        EditStok.setText(jTable1.getValueAt(row, 4).toString());
     }//GEN-LAST:event_EditBukuActionPerformed
 
     private void HapusBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusBukuActionPerformed
         int row = jTable1.getSelectedRow();
-        String idBuku = jTable1.getValueAt(row, 1).toString();
         
-        int cekHasil = bukuCtrl.hapusBuku(idBuku);
-        if (cekHasil == 0){
-            JOptionPane.showMessageDialog(this, "Gagal menghapus buku!");
+        if (row < 1){
+            JOptionPane.showMessageDialog(this, "Pilih baris yang akan dihapus!");
         } else {
-            JOptionPane.showMessageDialog(this, "Berhasil menghapus buku!");
-            DaftarBuku();
+            String idBuku = jTable1.getValueAt(row, 1).toString();
+
+            int cekHasil = bukuCtrl.hapusBuku(idBuku);
+            if (cekHasil == 0){
+                JOptionPane.showMessageDialog(this, "Gagal menghapus buku!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Berhasil menghapus buku!");
+                DaftarBuku();
+            }
         }
     }//GEN-LAST:event_HapusBukuActionPerformed
 
@@ -1037,13 +1050,17 @@ public class MenuAdmin extends javax.swing.JFrame {
         String kategori = jComboBox1.getSelectedItem().toString();
         int stok = Integer.parseInt(jTextField7.getText());
         
-        int cekHasil = bukuCtrl.tambahBuku(id, judul, kategori, stok);
-        if (cekHasil == 0){
-            JOptionPane.showMessageDialog(this, "Gagal menambahkan buku!");
+        if (id.isEmpty() || judul.isEmpty() || stok < 0){
+                JOptionPane.showMessageDialog(this, "inputan tidak valid!");
         } else {
-            JOptionPane.showMessageDialog(this, "Berhasil menambahkan buku!");
-            jTabbedPane1.setSelectedIndex(0);
-            DaftarBuku();
+            int cekHasil = bukuCtrl.tambahBuku(id, judul, kategori, stok);
+            if (cekHasil == 0){
+                JOptionPane.showMessageDialog(this, "Gagal menambahkan buku!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Berhasil menambahkan buku!");
+                jTabbedPane1.setSelectedIndex(0);
+                DaftarBuku();
+            }
         }
     }//GEN-LAST:event_insertBukuActionPerformed
 
@@ -1053,29 +1070,37 @@ public class MenuAdmin extends javax.swing.JFrame {
         String kategori = EditKategori.getSelectedItem().toString();
         int stok = Integer.parseInt(EditStok.getText());
 
-        int cekHasil = bukuCtrl.updateBuku(id, judul, kategori, stok);
-        
-        if (cekHasil == 0){
-            JOptionPane.showMessageDialog(this, "Gagal mengupdate buku!");
+        if (id.isEmpty() || judul.isEmpty() || stok < 0){
+            JOptionPane.showMessageDialog(this, "Inputan tidak valid!");
         } else {
-            JOptionPane.showMessageDialog(this, "Berhasil mengupdate  buku!");
-            jTabbedPane1.setSelectedIndex(0);
-            DaftarBuku();
+            int cekHasil = bukuCtrl.updateBuku(id, judul, kategori, stok);
+            if (cekHasil == 0){
+                JOptionPane.showMessageDialog(this, "Gagal mengupdate buku!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Berhasil mengupdate  buku!");
+                jTabbedPane1.setSelectedIndex(0);
+                DaftarBuku();
+            }
         }
     }//GEN-LAST:event_UpdateBukuActionPerformed
 
     private void DetailViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetailViewActionPerformed
         int row = jTable2.getSelectedRow();
-        String idPinjaman = jTable2.getValueAt(row, 1).toString();
-        this.DaftarDetailPinjaman(idPinjaman);
         
-        idPinjam.setText(": " + idPinjaman);
-        jmlPinjam.setText(": " + jTable3.getRowCount());
-        stsPinjam.setText(": " + jTable2.getValueAt(row, 5).toString());
-        tglPinjam.setText(": " + jTable2.getValueAt(row, 3).toString());
-        tglKembali.setText(": " + jTable2.getValueAt(row, 4).toString());
-        
-        jTabbedPane1.setSelectedIndex(5);
+        if (row < 1){
+            JOptionPane.showMessageDialog(this, "Pilih baris untuk melihat rincian!");
+        } else {   
+            String idPinjaman = jTable2.getValueAt(row, 1).toString();
+            this.DaftarDetailPinjaman(idPinjaman);
+
+            idPinjam.setText(": " + idPinjaman);
+            jmlPinjam.setText(": " + jTable3.getRowCount());
+            stsPinjam.setText(": " + jTable2.getValueAt(row, 5).toString());
+            tglPinjam.setText(": " + jTable2.getValueAt(row, 3).toString());
+            tglKembali.setText(": " + jTable2.getValueAt(row, 4).toString());
+
+            jTabbedPane1.setSelectedIndex(5);
+        }
     }//GEN-LAST:event_DetailViewActionPerformed
 
     private void PinjamanSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PinjamanSelesaiActionPerformed
