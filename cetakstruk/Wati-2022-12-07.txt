@@ -1,0 +1,12 @@
+		e-PERPUSTAKAAN
+	Salatiga City, AnjazzzKelazz
+==================================================
+
+Username: Wati
+Tanggal pinjam : 2022-12-07
+Tanggal kembali : 2022-12-14
+Jumlah Pinjaman : 2
+
+Detail Pinjaman : 
+1. 1 b003 Sang Kandidat
+2. 1 b004 Bumi Manusia
